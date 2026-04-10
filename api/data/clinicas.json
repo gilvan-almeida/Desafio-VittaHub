@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "titulo": "Clínica Vitta Saúde — Pinheiros",
+    "local": "São Paulo, SP — Pinheiros",
+    "especializacao": [
+      "Clínica geral",
+      "Cardiologia",
+      "Medicina preventiva"
+    ],
+    "nivelPreco": "$$",
+    "avaliacao": 4.8
+  },
+  {
+    "id": "2",
+    "titulo": "Centro Médico Aurora",
+    "local": "São Paulo, SP — Moema",
+    "especializacao": [
+      "Pediatria",
+      "Ginecologia",
+      "Obstetrícia"
+    ],
+    "nivelPreco": "$$$",
+    "avaliacao": 4.6
+  },
+  {
+    "id": "3",
+    "titulo": "Clínica Bem-Estar Paulista",
+    "local": "São Paulo, SP — Paulista",
+    "especializacao": [
+      "Medicina do trabalho",
+      "Check-ups executivos",
+      "Nutrição"
+    ],
+    "nivelPreco": "$",
+    "avaliacao": 4.2
+  },
+  {
+    "id": "4",
+    "titulo": "Instituto Ortopédico Horizonte",
+    "local": "São Paulo, SP — Vila Mariana",
+    "especializacao": [
+      "Ortopedia",
+      "Traumatologia",
+      "Fisioterapia"
+    ],
+    "nivelPreco": "$$",
+    "avaliacao": 4.9
+  }
+]
