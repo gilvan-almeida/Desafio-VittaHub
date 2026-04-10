@@ -1,11 +1,15 @@
 import Image from "next/image";
 import CardClinic from "@/components/CardClinic/CardClinic";
+import Button from "@/components/Button/Button"
+import NavBar from "@/components/NavBar/NavBar";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans ">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16  sm:items-start">
+    <div >
+      <main>
+        <NavBar/>
         <CardClinic/>
+        {/* <Button/> */}
       </main>
     </div>
   );
