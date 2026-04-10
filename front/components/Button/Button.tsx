@@ -1,10 +1,19 @@
-function Button(){
+import Link from "next/link";
+
+interface ButtonType {
+    name: string,
+    href: string,
+    colorButton?: string,
+    textColor: string
+}
+
+function Button({name, href, colorButton, textColor}: ButtonType){
     return(
-        <button className="cursor-pointer px-6 py-2 rounded-full bg-[#00633b] font-medium">
-            <span>
-                Criar Conta
+        <Link href={href} className={`px-6 py-2 rounded-full ${colorButton} font-medium`}>
+            <span className={textColor}>
+                {name}
             </span>
-        </button>
+        </Link>
     )
 }
 
