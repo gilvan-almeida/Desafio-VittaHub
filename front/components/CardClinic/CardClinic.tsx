@@ -1,36 +1,50 @@
 import { FiMapPin} from "react-icons/fi";
 import { FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
+
 
 function CardClinic(){
     return (
         <div className="max-w-[350px] bg-white rounded-[30px] shadow-lg overflow-hidden">
-            <div className="">
 
+            <div className="relative w-full h-60 ">
+                <Image
+                    src="/image.png"
+                    alt="Banner de teste clínica"
+                    fill
+                    className="object-cover"
+                    priority
+                />
             </div>
             <div>
-                <div className="title_Text_Card_Clinic">
-                    <h1>
+                <div className="p-6">
+                    <h1 className="text-gray-900 text-xl font-bold"> 
                         Clínica Vitta Saúde - Pinheiros
                     </h1>
-                    <div className="localization-clinic">
+                    <div className="flex items-center gap-1 text-gray-500">
                         <FiMapPin
-                            color="white"
+                           size={14}
                         />
-                        <h2>
+                        <span className="font-medium text-sm">
                             São Paulo
-                        </h2>
+                        </span>
                     </div>
 
-                    <div className="price_and_options">
-                        <div className="card_clinic_price">
-                            $$ 150
+                    <div className="flex items-center justify-between mt-8">
+                        <div className="text-[#087f5b] font-bold text-xl">
+                            <span>
+                                $$ 150
+                            </span>
                         </div>
-                        <div className="card_clinic_show_options">
-                            <h1>
+                        <button className="flex items-center text-[#087f5b] text-sm gap-2 font-bold">
+                            <span>
                                 Ver Detalhes
-                            </h1>
-                            <FaArrowRight/>
-                        </div>
+                            </span>
+                            <FaArrowRight
+                                size={14}
+                                color="#087f5b"
+                            />
+                        </button>
 
                     </div>
 
