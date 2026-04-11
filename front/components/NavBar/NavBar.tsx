@@ -48,15 +48,17 @@ function NavBar(){
             </div>
             <div className="flex gap-4">
                 <Button
-                    name="Entrar"
+                    title="Entrar"
                     href="/"
-                    textColor="text-[#475569]"                 
+                    textColor="text-[#475569]"
+                    hoverColor="hover:bg-[#cccaca]"                 
                 />
                 <Button
-                    name="Criar Conta"
+                    title="Criar Conta"
                     href="/"
                     colorButton="bg-[#006A37]"
                     textColor="text-[#CCFFD5]"
+                    hoverColor="hover:bg-[#048b4a]"
                 />
             </div>
         </nav>
