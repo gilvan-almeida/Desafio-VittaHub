@@ -3,58 +3,26 @@ import CardClinic from "@/components/CardClinic/CardClinic";
 import Button from "@/components/Button/Button"
 import NavBar from "@/components/NavBar/NavBar";
 import SearchBar from "@/components/SearchBar/SeachBar";
+import Footer from "@/components/Footer/Footer";
 
+import { getClinics } from "@/service/api";
 
-const listCard = [
-  {
-    key: 1,
-    name: "Clínica Vitta Saúde — Pinheiros",
-    localization: "São Paulo",
-    price: "150"
-  },{
-    key: 2,
-    name: "Clínica Vitta Saúde — Pinheiros",
-    localization: "São Paulo",
-    price: "150"
-  },{
-    key: 3,
-    name: "Clínica Vitta Saúde — Pinheiros",
-    localization: "São Paulo",
-    price: "150"
-  },{
-    key: 4,
-    name: "Clínica Vitta Saúde — Pinheiros",
-    localization: "São Paulo",
-    price: "150"
-  },{
-    key: 5,
-    name: "Clínica Vitta Saúde — Pinheiros",
-    localization: "São Paulo",
-    price: "150"
-  }, {
-    key: 6,
-    name: "Clínica Vitta Saúde — Pinheiros",
-    localization: "São Paulo",
-    price: "150"
-  }
-]
 
 export default function Home() {
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
+    <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
       <NavBar />
       
-      <main className="flex flex-col items-center justify-center">
-
-        <div className="flex flex-col items-center justify-center py-30 px-4 w-full">
-          <div className="text-center mb-12">
-            <span className="text-[#35FF91] text-sm font-bold mb-4 block ">
-              Rede de Saúde Premium
+      <main className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center py-20 md:py-45 px-6 w-full text-center">
+          <div className="mb-8 md:mb-12">
+            <span className="text-[#35FF91] text-xs md:text-sm font-bold mb-4 block tracking-widest">
+              REDE DE SAÚDE PREMIUM
             </span>
-            <h1 className="text-6xl font-bold leading-tight">
-              Encontre o cuidado que<br/>
-              <span className="text-[#35FF91]">pulsa com a vida.</span>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              Encontre o cuidado que<br className="hidden md:block" />
+              <span className="text-[#35FF91]"> pulsa com a vida.</span>
             </h1>
           </div>
           <div className="w-full max-w-3xl">
@@ -62,43 +30,43 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-white w-full py-30">
-          <div className="px-30 flex justify-between">
-            <div>
-              <div className="flex items-center gap-2"> 
-                <div className="w-10 h-0.75 bg-[#35FF91] rounded-full"></div>
-                <span className="text-[#35FF91] text-sm font-light">
-                  TODAS AS ÁREAS
-                </span>
-              </div>
-              <h1 className="text-5xl font-bold text-black">
-                Sua saúde, <br/> nosso diretório.
-              </h1>
+        <div className="bg-white w-full py-12 md:py-30">
+          <div className="px-6 md:px-30 flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+          <div>
+            <div className="flex items-center gap-2"> 
+              <div className="w-10 h-1 bg-[#35FF91] rounded-full"></div>
+              <span className="text-[#35FF91] text-sm font-bold">TODAS AS ÁREAS</span>
             </div>
-
-            <div className="flex gap-4 mt-20">
-              <Button
-                title="Todas as áreas"
-                href="/"
-                colorButton="bg-[#35FF91]"
-                textColor="text-[#005D2F]"
+            <h2 className="text-3xl md:text-5xl font-bold text-black mt-2">
+              Sua saúde, <br className="hidden md:block"/> nosso diretório.
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-3 md:gap-4 w-full md:w-auto md:mt-0">
+              <Button 
+                title="Todas as áreas" 
+                href="/" 
+                colorButton="bg-[#35FF91]" 
+                textColor="text-[#005D2F]" 
+                className="flex-1 md:flex-none text-center" 
               />
-              <Button
-                title="Todas as áreas"
-                href="/"
-                textColor="text-[#475569]"
-                hoverColor="hover:bg-[#cccaca]"
+              <Button 
+                title="Fisioterapia" 
+                href="/" 
+                textColor="text-[#475569]" 
+                hoverColor="hover:bg-gray-200"
+                className="flex-1 md:flex-none text-center border border-gray-100 md:border-none" 
               />
-              <Button
-                title="Todas as áreas"
-                href="/"
-                textColor="text-[#475569]"
-                hoverColor="hover:bg-[#cccaca]"
+              <Button 
+                title="Cardiologia" 
+                href="/" 
+                textColor="text-[#475569]" 
+                hoverColor="hover:bg-gray-200"
+                className="flex-1 md:flex-none text-center border border-gray-100 md:border-none"
               />
-            </div>
+          </div>
           </div>
 
-          <div className="w-full md:px-30 py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="w-full px-6 md:px-30 py-12 md:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {listCard.map((list) => (
               <CardClinic
                 key={list.key}
@@ -106,51 +74,52 @@ export default function Home() {
                 localization={list.localization}
                 price={list.price}
               />
-            ))}
+              ))}
           </div>
 
-          <div className="bg-white w-full py-6 px-30">
-            <div className="h-full bg-[#35FF91] rounded-[3rem]">
-              <div className="py-20 px-20 flex justify-between">
-                <div>
-                  <div>
-                    <h1 className="font-bold text-6xl text-[#005D2F]">
-                      Sua saúde, <br/> nosso diretorio
-                    </h1>
-                    <h1 className="text-[#005D2F] py-10">
-                      Junte-se a milhares de pessoas que encontram as melhores clínicas <br/>especializadas e profissionais de saúde em seu bairro.
-                    </h1>
-                    <Button
-                      title="Cadastrar minha clínica"
-                      href="/"
-                      colorButton="bg-[#006A37]"
-                      textColor="text-[#CCFFD5]"
-                    />
-                  </div>
+          <div className="bg-white w-full py-6 px-4 md:px-30">
+            <div className="bg-[#35FF91] rounded-[2rem] md:rounded-[3rem] overflow-hidden">
+              <div className="py-12 px-8 md:py-20 md:px-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
+                <div className="max-w-2xl flex flex-col items-center lg:items-start">
+                  <h2 className="font-bold text-4xl md:text-6xl text-[#005D2F] leading-tight">
+                    Sua saúde, <br/> nosso diretório
+                  </h2>
+                  <p className="text-[#005D2F] py-6 md:py-10 text-lg">
+                    Junte-se a milhares de pessoas que encontram as melhores clínicas especializadas e profissionais de saúde em seu bairro.
+                  </p>
+                  <Button
+                    title="Cadastrar minha clínica"
+                    href="/"
+                    colorButton="bg-[#006A37]"
+                    textColor="text-[#CCFFD5]"
+                    className="w-full md:w-auto py-4"
+                  />
                 </div>
-                <div className="flex items-center justify-end gap-6">
-                  <div className="bg-white/20 rounded-2xl w-[180px] h-[130px] text-center flex flex-col justify-center">
-                    <h1 className="font-bold text-4xl text-[#00633b]"> 
+                <div className="flex flex-row items-center justify-center lg:justify-end gap-4 md:gap-6 w-full lg:w-auto">
+                  <div className="bg-white/30 rounded-2xl w-35 xs:w-[160px] md:w-45 h-27.5 md:h-32.5 text-center flex flex-col justify-center shadow-sm">
+                    <h3 className="font-bold text-3xl md:text-4xl text-[#00633b]">
                       500+
-                    </h1>
-                    <h2 className="text-[#00633b] text-sm  font-medium">
+                    </h3>
+                    <p className="text-[#00633b] text-[10px] md:text-sm font-medium leading-tight px-2">
                       Clínicas certificadas
-                    </h2>
+                    </p>
                   </div>
-                  <div className="bg-white/20 rounded-2xl w-[180px] h-[130px] text-center flex flex-col justify-center">
-                    <h1 className="font-bold text-4xl text-[#00633b] "> 
+                  
+                  <div className="bg-white/30 rounded-2xl w-35 xs:w-[160px] md:w-45 h-27.5 md:h-32.5 text-center flex flex-col justify-center shadow-sm">
+                    <h3 className="font-bold text-3xl md:text-4xl text-[#00633b]">
                       15k
-                    </h1>
-                    <h2 className="text-[#00633b] text-sm  font-medium">
+                    </h3>
+                    <p className="text-[#00633b] text-[10px] md:text-sm font-medium leading-tight px-2">
                       Usuários mensais
-                    </h2>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+        
+        <Footer/>
       </main>
     </div>
   );
