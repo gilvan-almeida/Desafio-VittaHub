@@ -1,17 +1,18 @@
 import Link from "next/link";
 
 interface ButtonType {
-    name: string,
+    title: string,
     href: string,
     colorButton?: string,
-    textColor: string
+    textColor?: string,
+    hoverColor?: string,
 }
 
-function Button({name, href, colorButton, textColor}: ButtonType){
+function Button({title, href, colorButton, textColor, hoverColor}: ButtonType){
     return(
-        <Link href={href} className={`px-6 py-2 rounded-full ${colorButton} font-medium`}>
+        <Link href={href} className={`px-6 py-2 rounded-full ${colorButton} font-medium ${hoverColor}`}>
             <span className={textColor}>
-                {name}
+                {title}
             </span>
         </Link>
     )
