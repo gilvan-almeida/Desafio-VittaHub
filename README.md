@@ -15,24 +15,23 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 Para que o projeto funcione corretamente, você deve rodar a **API** e o **Frontend** simultaneamente em dois terminais diferentes.
 
 ### 1. Rodando a API (Servidor de dados)
-A API fornece os dados das clínicas e as imagens.
-1. Abra um terminal e entre na pasta da API:
-  cd api
-  npm install
-  npm start
+  Abra um terminal e entre na pasta da API:
+    cd api
+    npm install
+    npm start
 Por defeito a API sobe em http://localhost:3001 (confirma em api/package.json).
 
-2.Com a API rodando, abra um novo terminal:
+### 2.Com a API rodando, abra um novo terminal:
   Entre na pasta do frontend:
-  cd front
-  npm install
-  npm run dev
+    cd front
+    npm install
+    npm run dev
   
-💻 Acesso ao projeto
+### 3.Acesso ao projeto
 Após os passos acima, abra o seu navegador e acesse:
 👉 http://localhost:3000
 
-🧪 Funcionalidades Implementadas
+### Funcionalidades Implementadas
 Listagem Dinâmica: Consumo de dados reais da API local.
 
 Busca Inteligente: Filtro por nome da clínica, localização ou especialidade através da barra de busca.
