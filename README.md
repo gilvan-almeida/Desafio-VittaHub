@@ -16,16 +16,16 @@ Para que o projeto funcione corretamente, você deve rodar a **API** e o **Front
 
 ### 1. Rodando a API (Servidor de dados)
   Abra um terminal e entre na pasta da API:
-    cd api
-    npm install
-    npm start
+    * cd api
+    * npm install
+    * npm start
 Por defeito a API sobe em http://localhost:3001 (confirma em api/package.json).
 
 ### 2.Com a API rodando, abra um novo terminal:
   Entre na pasta do frontend:
-    cd front
-    npm install
-    npm run dev
+    * cd front
+    * npm install
+    * npm run dev
   
 ### 3.Acesso ao projeto
 Após os passos acima, abra o seu navegador e acesse:
