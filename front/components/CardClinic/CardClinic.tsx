@@ -3,22 +3,23 @@ import { FaArrowRight } from "react-icons/fa";
 import Image from "next/image";
 
 interface CardDades{
-    image?: string,
+    image: string,
     name: string,
     localization: string,
-    price: string
+    price: string,
+    stars: number,
 }
 
 
 
-function CardClinic({image, name, localization, price}: CardDades){
+function CardClinic({image, name, localization, price, stars}: CardDades){
     return (
         <div className="w-full bg-white rounded-[30px] shadow-lg overflow-hidden">
 
             <div className="relative w-full h-60 ">
                 <Image
-                    src="/image.png"
-                    alt="Banner de teste clínica"
+                    src={image}
+                    alt={`${name}`}
                     fill
                     className="object-cover"
                     priority
@@ -41,7 +42,7 @@ function CardClinic({image, name, localization, price}: CardDades){
                     <div className="flex items-center justify-between mt-8">
                         <div className="text-[#087f5b] font-bold text-xl">
                             <span>
-                                $$ {price}
+                                {price} {stars}
                             </span>
                         </div>
                         <button className="flex items-center text-[#087f5b] text-sm gap-2 font-bold">

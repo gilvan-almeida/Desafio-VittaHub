@@ -2,20 +2,20 @@ import Link from "next/link";
 
 interface ButtonType {
     title: string,
-    href: string,
     colorButton?: string,
     textColor?: string,
     hoverColor?: string,
     className?: string;
+    onClick?: () => void;
 }
 
-function Button({title, href, colorButton, textColor, hoverColor, className}: ButtonType){
+function Button({title,colorButton, textColor, hoverColor, className, onClick}: ButtonType){
     return(
-        <Link href={href} className={`px-6 py-2 rounded-full ${colorButton} font-medium ${hoverColor} ${className}`}>
+        <button onClick={onClick} className={`px-6 py-2 rounded-full ${colorButton} font-medium ${hoverColor} ${className}`}>
             <span className={textColor}>
                 {title}
             </span>
-        </Link>
+        </button>
     )
 }
 

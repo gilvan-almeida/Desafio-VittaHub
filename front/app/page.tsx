@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import CardClinic from "@/components/CardClinic/CardClinic";
 import Button from "@/components/Button/Button"
@@ -5,10 +7,43 @@ import NavBar from "@/components/NavBar/NavBar";
 import SearchBar from "@/components/SearchBar/SeachBar";
 import Footer from "@/components/Footer/Footer";
 
+import { Clinic } from "@/types/clinics";
 import { getClinics } from "@/service/api";
 
 
 export default function Home() {
+
+  const [allClinics, setAllClinics] = useState<Clinic[]>([]);
+  const [searchDades, setSearchDades] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [categoriaAtiva, setCategoriaAtiva] = useState("Todas as áreas");
+
+  useEffect(() => { 
+    const dades = async () =>{
+      try{
+        const dadesClinic = await getClinics();
+        if(dadesClinic) setAllClinics(dadesClinic);
+      } catch (err) {
+        console.error(err);
+      } finally{
+        setLoading(false);
+      }
+    };
+    dades();
+  }, []);
+
+  const clinicFiltered = allClinics.filter(clinic => {
+    const matchesSearch = 
+      clinic.titulo.toLowerCase().includes(searchDades.toLowerCase()) ||
+      clinic.local.toLowerCase().includes(searchDades.toLowerCase()) ||
+      clinic.especializacao.some(esp => esp.toLowerCase().includes(searchDades.toLowerCase()));
+
+    const matchesCategory = 
+      categoriaAtiva === "Todas as áreas" || 
+      clinic.especializacao.some(esp => esp.toLowerCase() === categoriaAtiva.toLowerCase());
+
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="min-h-screen bg-[#121212] text-white overflow-x-hidden">
@@ -26,7 +61,9 @@ export default function Home() {
             </h1>
           </div>
           <div className="w-full max-w-3xl">
-            <SearchBar />
+            <SearchBar 
+              onSearch={setSearchDades}
+            />
           </div>
         </div>
 
@@ -43,42 +80,53 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap gap-3 md:gap-4 w-full md:w-auto md:mt-0">
               <Button 
-                title="Todas as áreas" 
-                href="/" 
-                colorButton="bg-[#35FF91]" 
-                textColor="text-[#005D2F]" 
-                className="flex-1 md:flex-none text-center" 
-              />
+                  title="Todas as áreas" 
+                  onClick={() => setCategoriaAtiva("Todas as áreas")}
+                  colorButton={categoriaAtiva === "Todas as áreas" ? "bg-[#35FF91]" : "bg-gray-100"} 
+                  textColor={categoriaAtiva === "Todas as áreas" ? "text-[#005D2F]" : "text-[#475569]"} 
+                  className="flex-1 md:flex-none text-center" 
+                />
               <Button 
                 title="Fisioterapia" 
-                href="/" 
-                textColor="text-[#475569]" 
-                hoverColor="hover:bg-gray-200"
+                onClick={() => setCategoriaAtiva("Fisioterapia")}
+                colorButton={categoriaAtiva === "Fisioterapia" ? "bg-[#35FF91]" : "bg-gray-100"} 
+                textColor={categoriaAtiva === "Fisioterapia" ? "text-[#005D2F]" : "text-[#475569]"} 
                 className="flex-1 md:flex-none text-center border border-gray-100 md:border-none" 
               />
               <Button 
                 title="Cardiologia" 
-                href="/" 
-                textColor="text-[#475569]" 
-                hoverColor="hover:bg-gray-200"
+                onClick={() => setCategoriaAtiva("Cardiologia")}
+                colorButton={categoriaAtiva === "Cardiologia" ? "bg-[#35FF91]" : "bg-gray-100"} 
+                textColor={categoriaAtiva === "Cardiologia" ? "text-[#005D2F]" : "text-[#475569]"} 
                 className="flex-1 md:flex-none text-center border border-gray-100 md:border-none"
               />
           </div>
           </div>
 
           <div className="w-full px-6 md:px-30 py-12 md:py-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-            {listCard.map((list) => (
-              <CardClinic
-                key={list.key}
-                name={list.name}
-                localization={list.localization}
-                price={list.price}
-              />
-              ))}
+            {loading ? (
+                    <p>Carregando...</p>
+                ) : (
+                    clinicFiltered.map((clinica) => (
+                        <CardClinic
+                            key={clinica.id}
+                            name={clinica.titulo}
+                            localization={clinica.local}
+                            stars={clinica.avaliacao}
+                            image={clinica.imagem}
+                            price={clinica.nivelPreco}
+                        />
+                    ))
+                )}
+                {!loading && clinicFiltered.length === 0 && (
+                    <p className="col-span-full text-center text-gray-500">
+                        Nenhuma clínica encontrada para "{searchDades}"
+                    </p>
+                )}
           </div>
 
           <div className="bg-white w-full py-6 px-4 md:px-30">
-            <div className="bg-[#35FF91] rounded-[2rem] md:rounded-[3rem] overflow-hidden">
+            <div className="bg-[#35FF91] rounded-4xl md:rounded-[3rem] overflow-hidden">
               <div className="py-12 px-8 md:py-20 md:px-20 flex flex-col lg:flex-row items-center justify-between gap-12 text-center lg:text-left">
                 <div className="max-w-2xl flex flex-col items-center lg:items-start">
                   <h2 className="font-bold text-4xl md:text-6xl text-[#005D2F] leading-tight">
@@ -89,7 +137,6 @@ export default function Home() {
                   </p>
                   <Button
                     title="Cadastrar minha clínica"
-                    href="/"
                     colorButton="bg-[#006A37]"
                     textColor="text-[#CCFFD5]"
                     className="w-full md:w-auto py-4"

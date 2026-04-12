@@ -1,6 +1,8 @@
+import { Clinic } from "@/types/clinics";
+
 const URL_API = "http://localhost:3001"
 
-export async function getClinics() {
+export async function getClinics():Promise<Clinic[]>{
     const response = await fetch(`${URL_API}/clinicas`,{
         next: {revalidate: 3600/2}
     });
