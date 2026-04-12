@@ -35,10 +35,10 @@ Por defeito a API sobe em http://localhost:3001 (confirma em api/package.json).
 👉 http://localhost:3000
 
 ### 4.Funcionalidades Implementadas
-##Listagem Dinâmica: Consumo de dados reais da API local.
+Listagem Dinâmica: Consumo de dados reais da API local.
 
-##Busca Inteligente: Filtro por nome da clínica, localização ou especialidade através da barra de busca.
+ Busca Inteligente: Filtro por nome da clínica, localização ou especialidade através da barra de busca.
 
-##Categorização por Botões: Filtros rápidos (Fisioterapia, Cardiologia, etc) com feedback visual de estado ativo.
+ Categorização por Botões: Filtros rápidos (Fisioterapia, Cardiologia, etc) com feedback visual de estado ativo.
 
-##Responsividade: Interface adaptada para dispositivos móveis e desktop conforme as diretrizes do projeto.
+ Responsividade: Interface adaptada para dispositivos móveis e desktop conforme as diretrizes do projeto.
